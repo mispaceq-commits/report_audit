@@ -7,7 +7,7 @@
     "build:css": "tailwindcss -i ./src/styles.css -o ./src/styles.build.css --minify",
     "watch:css": "tailwindcss -i ./src/styles.css -o ./src/styles.build.css --watch",
     "serve": "http-server src -p 8080 -c-1",
-    "export": "node scripts/export.js",
+    "export": "npm run build:css && node scripts/export.js",
     "build": "npm run build:css && npm run export"
   },
   "devDependencies": {
