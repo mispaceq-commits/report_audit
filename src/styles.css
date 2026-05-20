@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    color: #1F3C88;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer components {
+  /* A4 page: 210 x 297 mm. We use mm units so PDF export is exact. */
+  .page-a4 {
+    width: 210mm;
+    height: 297mm;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* When viewed in browser, give the page a subtle shadow. Removed in print. */
+  .page-shell {
+    background: #E9EBF2;
+    min-height: 100vh;
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .page-shell .page-a4 {
+    box-shadow: 0 4px 24px rgba(31, 60, 136, 0.10), 0 1px 2px rgba(0,0,0,0.06);
+  }
+
+  /* Headline-stat card */
+  .stat-card {
+    border: 1px solid #E5E7EE;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 1px 0 rgba(31,60,136,0.04);
+  }
+
+  .suggestion-card {
+    border: 1px solid #E5E7EE;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 9.5pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1F3C88;
+  }
+
+  .accent-line {
+    height: 3px;
+    width: 56px;
+    background: #F58B24;
+    border-radius: 3px;
+  }
+
+  .footer-rule {
+    border-top: 1px solid #E5E7EE;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body { background: #ffffff; }
+  .page-shell { background: #ffffff; padding: 0; gap: 0; }
+  .page-shell .page-a4 { box-shadow: none; page-break-after: always; }
+  .page-shell .page-a4:last-child { page-break-after: auto; }
+}
