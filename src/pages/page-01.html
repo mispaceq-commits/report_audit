@@ -8,20 +8,37 @@
 </head>
 <body class="page-shell">
 
-  <article class="page-a4" id="page-1">
+  <article class="page-a4 relative overflow-hidden" id="page-1">
+
+    <!-- Decorative background blobs (very soft brand colors, no orange) -->
+    <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
+      <!-- top-right pale blue ring -->
+      <svg class="absolute -top-[40mm] -right-[40mm] w-[160mm] h-[160mm] opacity-[0.18]" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#1F3C88" stroke-width="0.8" />
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#1F3C88" stroke-width="0.6" />
+        <circle cx="100" cy="100" r="40" fill="none" stroke="#1F3C88" stroke-width="0.4" />
+      </svg>
+      <!-- bottom-left soft blob -->
+      <svg class="absolute -bottom-[60mm] -left-[40mm] w-[180mm] h-[180mm] opacity-[0.08]" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="100" fill="url(#blob-grad)" />
+        <defs>
+          <radialGradient id="blob-grad">
+            <stop offset="0%" stop-color="#1F3C88" />
+            <stop offset="100%" stop-color="#1F3C88" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
 
     <!-- Top brand strip -->
-    <header class="absolute top-0 left-0 right-0 px-[16mm] pt-[12mm] flex items-center justify-between">
+    <header class="absolute top-0 left-0 right-0 px-[16mm] pt-[12mm] flex items-center justify-between z-10">
       <div class="flex items-center gap-3">
-        <!-- Brand mark: bold blue square with lightning bolt + 48 -->
-        <div class="flex items-center justify-center w-[14mm] h-[14mm] rounded-[2.4mm] bg-brand-blue text-white font-display font-black"
+        <div class="flex items-center justify-center w-[14mm] h-[14mm] rounded-[2.4mm] bg-brand-blue text-white font-display font-black relative"
              style="box-shadow: 0 1mm 2mm rgba(31,60,136,0.25);">
-          <div class="relative leading-none flex items-center justify-center w-full h-full">
-            <svg class="absolute left-[1.6mm] top-[1.8mm] w-[3.6mm] h-[3.6mm]" viewBox="0 0 24 24" fill="#F58B24" aria-hidden="true">
-              <path d="M13 2 3 14h7l-1 8 11-13h-7l1-7Z"/>
-            </svg>
-            <span class="font-display font-black text-white" style="font-size: 16pt; letter-spacing: -0.04em; padding-left: 2mm;">48</span>
-          </div>
+          <svg class="absolute left-[1.6mm] top-[1.8mm] w-[3.6mm] h-[3.6mm]" viewBox="0 0 24 24" fill="#F58B24" aria-hidden="true">
+            <path d="M13 2 3 14h7l-1 8 11-13h-7l1-7Z"/>
+          </svg>
+          <span class="font-display font-black text-white absolute right-[2.2mm] bottom-[1.6mm]" style="font-size: 14pt; letter-spacing: -0.04em; line-height: 1;">48</span>
         </div>
         <div class="leading-tight">
           <div class="font-display font-extrabold text-brand-blue text-[12pt] tracking-tightish">48 Digital</div>
@@ -36,18 +53,18 @@
     </header>
 
     <!-- Hero title block -->
-    <section class="px-[16mm] pt-[34mm]">
+    <section class="relative z-10 px-[16mm] pt-[30mm]">
       <div class="font-body text-[8.5pt] tracking-[0.18em] uppercase text-brand-muted">
         Prepared for <span class="text-brand-ink font-semibold">Edward @ Blinder Law Firm</span>
         <span class="mx-2 text-brand-line">|</span>
         <span class="text-brand-ink font-semibold">blinderlaw.com</span>
       </div>
 
-      <h1 class="mt-[3mm] font-display font-black text-brand-blue leading-[0.92] tracking-tighter2"
-          style="font-size: 56pt;">
+      <h1 class="mt-[2.5mm] font-display font-black text-brand-blue leading-[0.92] tracking-tighter2"
+          style="font-size: 50pt;">
         Website&nbsp;Audit
       </h1>
-      <div class="mt-[3mm] flex items-center gap-3">
+      <div class="mt-[2.5mm] flex items-center gap-3">
         <span class="accent-line"></span>
         <span class="font-display font-semibold text-brand-ink text-[12pt] tracking-tightish">
           Your 48-Hour Growth Diagnostic
@@ -56,8 +73,8 @@
     </section>
 
     <!-- Site Health Overview -->
-    <section class="px-[16mm] mt-[10mm]">
-      <div class="flex items-center justify-between mb-[4mm]">
+    <section class="relative z-10 px-[16mm] mt-[7mm]">
+      <div class="flex items-center justify-between mb-[3.5mm]">
         <div class="badge">
           <span class="inline-block w-[6mm] h-[1px] bg-brand-blue/40"></span>
           Site Health Overview
@@ -65,63 +82,140 @@
         <div class="font-body text-[8pt] text-brand-muted tracking-wide">Crawled pages diagnostic · 100 pages</div>
       </div>
 
-      <div class="grid grid-cols-12 gap-[5mm]">
+      <div class="grid grid-cols-12 gap-[4mm]">
 
-        <!-- 93% headline card -->
-        <div class="col-span-8 stat-card">
-          <img src="../assets/icons/padlock_magnifying_glass.svg" alt="" class="w-[20mm] h-[20mm] shrink-0" />
-          <div class="flex-1 min-w-0">
-            <div class="flex items-baseline gap-3">
-              <div class="font-display font-black text-brand-blue leading-none tracking-tighter2"
-                   style="font-size: 48pt;">93%</div>
-              <div class="font-display font-bold text-brand-blue uppercase tracking-[0.08em] text-[9pt]">Critical</div>
+        <!-- Donut chart card -->
+        <div class="col-span-7 stat-card relative">
+          <div class="flex items-center gap-[5mm] w-full">
+            <!-- Donut chart SVG -->
+            <div class="relative w-[40mm] h-[40mm] shrink-0">
+              <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+                <!-- Background ring (white space gives subtle separation) -->
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#F1F3FA" stroke-width="12" />
+                <!-- Segments: 93 / 5 / 1 / 1 (circumference 2*pi*42 = 263.9) -->
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#1F3C88" stroke-width="12"
+                        stroke-dasharray="245.42 263.9" stroke-dashoffset="0" />
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#4CAF50" stroke-width="12"
+                        stroke-dasharray="13.2 263.9" stroke-dashoffset="-245.42" />
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#9CA3AF" stroke-width="12"
+                        stroke-dasharray="2.64 263.9" stroke-dashoffset="-258.62" />
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#C7C9D3" stroke-width="12"
+                        stroke-dasharray="2.64 263.9" stroke-dashoffset="-261.26" />
+              </svg>
+              <!-- Center label -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <div class="font-display font-black text-brand-blue leading-none tracking-tighter2"
+                     style="font-size: 26pt;">93%</div>
+                <div class="mt-[0.6mm] font-body uppercase tracking-[0.1em] text-brand-muted text-[6.5pt]">Health Score</div>
+              </div>
             </div>
-            <p class="mt-[1mm] font-body text-brand-ink text-[10pt] leading-snug">
-              of crawled pages have technical issues. Only
-              <span class="font-semibold">5% are healthy.</span>
-            </p>
 
-            <!-- Mini distribution bar -->
-            <div class="mt-[2.5mm]">
-              <div class="flex h-[2.2mm] w-full rounded-full overflow-hidden bg-brand-line">
-                <div style="width: 93%; background: #1F3C88;"></div>
-                <div style="width: 5%;  background: #4CAF50;"></div>
-                <div style="width: 1%;  background: #9CA3AF;"></div>
-                <div style="width: 1%;  background: #C7C9D3;"></div>
+            <!-- Right column: status pill + breakdown -->
+            <div class="flex-1 min-w-0">
+              <div class="inline-flex items-center gap-[1.5mm] rounded-full bg-[#F58B24]/10 px-[3mm] py-[1mm]">
+                <span class="w-[2mm] h-[2mm] rounded-full" style="background:#F58B24"></span>
+                <span class="font-display font-bold uppercase tracking-[0.12em] text-[7.5pt]" style="color:#F58B24">Critical Warning</span>
               </div>
-              <div class="mt-[1.6mm] flex items-center justify-between gap-[2mm] font-body text-[6.5pt] text-brand-ink whitespace-nowrap">
-                <span class="inline-flex items-center gap-[1.5mm]"><span class="w-[1.8mm] h-[1.8mm] rounded-sm bg-brand-blue"></span>Issues 93%</span>
-                <span class="inline-flex items-center gap-[1.5mm]"><span class="w-[1.8mm] h-[1.8mm] rounded-sm" style="background:#4CAF50"></span>Healthy 5%</span>
-                <span class="inline-flex items-center gap-[1.5mm]"><span class="w-[1.8mm] h-[1.8mm] rounded-sm" style="background:#9CA3AF"></span>Blocked 1%</span>
-                <span class="inline-flex items-center gap-[1.5mm]"><span class="w-[1.8mm] h-[1.8mm] rounded-sm" style="background:#C7C9D3"></span>Redirect 1%</span>
-              </div>
+              <p class="mt-[2mm] font-body text-brand-ink text-[9.5pt] leading-snug">
+                <span class="font-semibold">93% of crawled pages</span> have technical issues. Only
+                <span class="font-semibold">5% are healthy.</span>
+              </p>
+
+              <!-- Breakdown rows -->
+              <ul class="mt-[2.5mm] space-y-[1.2mm]">
+                <li class="flex items-center justify-between font-body text-[8pt] text-brand-ink">
+                  <span class="inline-flex items-center gap-[1.5mm]">
+                    <span class="w-[2.2mm] h-[2.2mm] rounded-[1px]" style="background:#1F3C88"></span>
+                    Have technical issues
+                  </span>
+                  <span class="font-display font-bold text-brand-blue">93%</span>
+                </li>
+                <li class="flex items-center justify-between font-body text-[8pt] text-brand-ink">
+                  <span class="inline-flex items-center gap-[1.5mm]">
+                    <span class="w-[2.2mm] h-[2.2mm] rounded-[1px]" style="background:#4CAF50"></span>
+                    Healthy
+                  </span>
+                  <span class="font-display font-bold" style="color:#1F3C88">5%</span>
+                </li>
+                <li class="flex items-center justify-between font-body text-[8pt] text-brand-ink">
+                  <span class="inline-flex items-center gap-[1.5mm]">
+                    <span class="w-[2.2mm] h-[2.2mm] rounded-[1px]" style="background:#9CA3AF"></span>
+                    Blocked
+                  </span>
+                  <span class="font-display font-bold text-brand-blue">1%</span>
+                </li>
+                <li class="flex items-center justify-between font-body text-[8pt] text-brand-ink">
+                  <span class="inline-flex items-center gap-[1.5mm]">
+                    <span class="w-[2.2mm] h-[2.2mm] rounded-[1px]" style="background:#C7C9D3"></span>
+                    Redirect
+                  </span>
+                  <span class="font-display font-bold text-brand-blue">1%</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- 24 recommendations card -->
-        <div class="col-span-4 stat-card flex-col items-start text-left">
-          <div class="flex items-center gap-3 w-full">
-            <img src="../assets/icons/target.svg" alt="" class="w-[16mm] h-[16mm] shrink-0" />
-            <div class="flex-1">
+        <!-- Radial gauge / Recommendations card -->
+        <div class="col-span-5 stat-card flex-col items-stretch">
+          <div class="flex items-center justify-between">
+            <div>
               <div class="font-body uppercase tracking-[0.12em] text-brand-muted text-[7.5pt]">Recommendations</div>
-              <div class="font-display font-black text-brand-blue leading-none tracking-tighter2"
-                   style="font-size: 40pt;">24</div>
+              <div class="font-display font-black text-brand-blue leading-none tracking-tighter2 mt-[1mm]"
+                   style="font-size: 36pt;">24</div>
+              <div class="font-body text-brand-ink text-[8.5pt] mt-[0.5mm]">Across 4 priority pillars</div>
+            </div>
+            <!-- 4-segment radial -->
+            <div class="relative w-[28mm] h-[28mm] shrink-0">
+              <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#F1F3FA" stroke-width="10" />
+                <!-- 4 equal segments with small gaps (each segment 23%, 2% gap) -->
+                <!-- C = 2pi*40 = 251.33; 23% = 57.8; 2% gap = 5.03 -->
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#1F3C88" stroke-width="10"
+                        stroke-dasharray="57.8 251.33" stroke-dashoffset="0" stroke-linecap="round" />
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#1F3C88" stroke-width="10"
+                        stroke-dasharray="57.8 251.33" stroke-dashoffset="-62.83" stroke-linecap="round"
+                        opacity="0.78" />
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#1F3C88" stroke-width="10"
+                        stroke-dasharray="57.8 251.33" stroke-dashoffset="-125.66" stroke-linecap="round"
+                        opacity="0.56" />
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#1F3C88" stroke-width="10"
+                        stroke-dasharray="57.8 251.33" stroke-dashoffset="-188.5" stroke-linecap="round"
+                        opacity="0.34" />
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <img src="../assets/icons/target.svg" alt="" class="w-[11mm] h-[11mm]" />
+              </div>
             </div>
           </div>
-          <p class="mt-[2mm] font-body text-brand-ink text-[9pt] leading-snug">
-            High-impact fixes ready to apply across content, conversion, and technical layers.
-          </p>
-          <span class="mt-[1.5mm] inline-block h-[2px] w-[14mm]" style="background:#F58B24"></span>
-          <div class="mt-[1.5mm] font-body uppercase tracking-[0.1em] text-brand-muted text-[7pt]">Across 4 priority pillars</div>
+
+          <!-- Pillar breakdown -->
+          <div class="mt-[2.5mm] grid grid-cols-2 gap-[1.5mm]">
+            <div class="flex items-center justify-between rounded-[3px] bg-brand-blue-light/40 px-[2mm] py-[1mm]">
+              <span class="font-body text-brand-ink text-[7.5pt]">Conversion</span>
+              <span class="font-display font-bold text-brand-blue text-[8pt]">8</span>
+            </div>
+            <div class="flex items-center justify-between rounded-[3px] bg-brand-blue-light/40 px-[2mm] py-[1mm]">
+              <span class="font-body text-brand-ink text-[7.5pt]">Content</span>
+              <span class="font-display font-bold text-brand-blue text-[8pt]">7</span>
+            </div>
+            <div class="flex items-center justify-between rounded-[3px] bg-brand-blue-light/40 px-[2mm] py-[1mm]">
+              <span class="font-body text-brand-ink text-[7.5pt]">Technical</span>
+              <span class="font-display font-bold text-brand-blue text-[8pt]">6</span>
+            </div>
+            <div class="flex items-center justify-between rounded-[3px] bg-brand-blue-light/40 px-[2mm] py-[1mm]">
+              <span class="font-body text-brand-ink text-[7.5pt]">Trust</span>
+              <span class="font-display font-bold text-brand-blue text-[8pt]">3</span>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- Top 3 Suggestions -->
-    <section class="px-[16mm] mt-[8mm]">
-      <div class="flex items-center justify-between mb-[4mm]">
+    <section class="relative z-10 px-[16mm] mt-[6mm]">
+      <div class="flex items-center justify-between mb-[3.5mm]">
         <div class="badge">
           <span class="inline-block w-[6mm] h-[1px] bg-brand-blue/40"></span>
           Top 3 Suggestions for 48-Hour Growth
@@ -129,13 +223,17 @@
         <div class="font-body text-[8pt] text-brand-muted tracking-wide">Where to focus first</div>
       </div>
 
-      <div class="grid grid-cols-3 gap-[5mm]">
+      <div class="grid grid-cols-3 gap-[4mm]">
 
         <!-- #1 Hero Section -->
-        <div class="suggestion-card">
+        <div class="suggestion-card relative">
           <div class="flex items-start justify-between">
             <img src="../assets/icons/rocket.svg" alt="" class="w-[18mm] h-[18mm]" />
-            <span class="font-display font-black text-brand-blue text-[14pt] leading-none">#1</span>
+            <div class="flex flex-col items-end gap-[1mm]">
+              <span class="font-display font-black text-brand-blue text-[14pt] leading-none">#1</span>
+              <span class="rounded-full px-[2mm] py-[0.5mm] font-display font-bold uppercase tracking-[0.1em] text-[6.5pt]"
+                    style="background:#1F3C88; color:#fff;">High Priority</span>
+            </div>
           </div>
           <div>
             <h3 class="font-display font-bold text-brand-blue text-[11pt] leading-tight tracking-tightish">
@@ -146,34 +244,61 @@
             </div>
           </div>
           <p class="font-body text-brand-ink text-[9pt] leading-snug">
-            Replace the vague hero with a benefit-driven headline, supporting subheadline, and one dominant CTA. Visitors decide in under three seconds.
+            Replace the vague hero with a benefit-driven headline, subheadline, and one dominant CTA. Visitors decide in under three seconds.
           </p>
+          <!-- Impact bar -->
+          <div class="lift-bar">
+            <div class="flex items-center justify-between font-body text-[7pt] text-brand-muted uppercase tracking-[0.1em]">
+              <span>Expected Lift</span>
+              <span class="text-brand-blue font-display font-bold tracking-normal text-[8.5pt] normal-case">+15–30%</span>
+            </div>
+            <div class="mt-[1mm] h-[2mm] w-full rounded-full bg-brand-line overflow-hidden">
+              <div style="width: 82%; background: linear-gradient(90deg,#1F3C88,#3956B7);" class="h-full rounded-full"></div>
+            </div>
+          </div>
         </div>
 
         <!-- #2 Exit-Intent Pop-Up -->
-        <div class="suggestion-card">
+        <div class="suggestion-card relative">
           <div class="flex items-start justify-between">
             <img src="../assets/icons/magnet.svg" alt="" class="w-[18mm] h-[18mm]" />
-            <span class="font-display font-black text-brand-blue text-[14pt] leading-none">#2</span>
+            <div class="flex flex-col items-end gap-[1mm]">
+              <span class="font-display font-black text-brand-blue text-[14pt] leading-none">#2</span>
+              <span class="rounded-full px-[2mm] py-[0.5mm] font-display font-bold uppercase tracking-[0.1em] text-[6.5pt]"
+                    style="background:#1F3C88; color:#fff;">Quick Win</span>
+            </div>
           </div>
           <div>
             <h3 class="font-display font-bold text-brand-blue text-[11pt] leading-tight tracking-tightish">
-              Add an Exit-Intent Pop-Up
+              Add an Exit‑Intent Pop‑Up
             </h3>
             <div class="font-body text-[7.5pt] uppercase tracking-[0.1em] text-brand-muted mt-[0.5mm]">
               Capture Lost Conversions
             </div>
           </div>
           <p class="font-body text-brand-ink text-[9pt] leading-snug">
-            Trigger a single, compelling offer when users go to leave. Recovers 5–15% of abandoning visitors and turns lost traffic into leads.
+            Trigger a compelling offer when users leave. Recovers 5–15% of abandoning visitors and turns lost traffic into leads.
           </p>
+          <div class="lift-bar">
+            <div class="flex items-center justify-between font-body text-[7pt] text-brand-muted uppercase tracking-[0.1em]">
+              <span>Expected Lift</span>
+              <span class="text-brand-blue font-display font-bold tracking-normal text-[8.5pt] normal-case">+5–15%</span>
+            </div>
+            <div class="mt-[1mm] h-[2mm] w-full rounded-full bg-brand-line overflow-hidden">
+              <div style="width: 60%; background: linear-gradient(90deg,#1F3C88,#3956B7);" class="h-full rounded-full"></div>
+            </div>
+          </div>
         </div>
 
         <!-- #3 Remove Friction -->
-        <div class="suggestion-card">
+        <div class="suggestion-card relative">
           <div class="flex items-start justify-between">
             <img src="../assets/icons/clipboard.svg" alt="" class="w-[18mm] h-[18mm]" />
-            <span class="font-display font-black text-brand-blue text-[14pt] leading-none">#3</span>
+            <div class="flex flex-col items-end gap-[1mm]">
+              <span class="font-display font-black text-brand-blue text-[14pt] leading-none">#3</span>
+              <span class="rounded-full px-[2mm] py-[0.5mm] font-display font-bold uppercase tracking-[0.1em] text-[6.5pt]"
+                    style="background:#1F3C88; color:#fff;">Med Effort</span>
+            </div>
           </div>
           <div>
             <h3 class="font-display font-bold text-brand-blue text-[11pt] leading-tight tracking-tightish">
@@ -184,16 +309,71 @@
             </div>
           </div>
           <p class="font-body text-brand-ink text-[9pt] leading-snug">
-            Cut form fields to essentials, use one primary CTA per page, and place trust signals near the button. Every extra click is lost revenue.
+            Cut form fields to essentials, one primary CTA per page, and place trust signals near the button. Every extra click is lost revenue.
           </p>
+          <div class="lift-bar">
+            <div class="flex items-center justify-between font-body text-[7pt] text-brand-muted uppercase tracking-[0.1em]">
+              <span>Expected Lift</span>
+              <span class="text-brand-blue font-display font-bold tracking-normal text-[8.5pt] normal-case">+10–25%</span>
+            </div>
+            <div class="mt-[1mm] h-[2mm] w-full rounded-full bg-brand-line overflow-hidden">
+              <div style="width: 72%; background: linear-gradient(90deg,#1F3C88,#3956B7);" class="h-full rounded-full"></div>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
 
+    <!-- Forecasted Impact -->
+    <section class="relative z-10 px-[16mm] mt-[6mm]">
+      <div class="flex items-center justify-between mb-[3mm]">
+        <div class="badge">
+          <span class="inline-block w-[6mm] h-[1px] bg-brand-blue/40"></span>
+          Forecasted Impact
+        </div>
+        <div class="font-body text-[8pt] text-brand-muted tracking-wide">Industry benchmarks for these fixes</div>
+      </div>
+
+      <div class="rounded-[14px] border border-brand-line bg-white px-[5mm] py-[4mm]">
+        <div class="grid grid-cols-3 gap-[6mm]">
+          <!-- KPI 1 -->
+          <div>
+            <div class="flex items-baseline justify-between">
+              <div class="font-body text-[8pt] text-brand-ink">Conversion rate</div>
+              <div class="font-display font-bold text-brand-blue text-[10pt]">+15–25%</div>
+            </div>
+            <div class="mt-[1.5mm] h-[2.4mm] rounded-full bg-brand-line overflow-hidden">
+              <div style="width: 70%;" class="h-full rounded-full bg-brand-blue"></div>
+            </div>
+          </div>
+          <!-- KPI 2 -->
+          <div>
+            <div class="flex items-baseline justify-between">
+              <div class="font-body text-[8pt] text-brand-ink">Lead capture</div>
+              <div class="font-display font-bold text-brand-blue text-[10pt]">+5–15%</div>
+            </div>
+            <div class="mt-[1.5mm] h-[2.4mm] rounded-full bg-brand-line overflow-hidden">
+              <div style="width: 45%;" class="h-full rounded-full bg-brand-blue"></div>
+            </div>
+          </div>
+          <!-- KPI 3 -->
+          <div>
+            <div class="flex items-baseline justify-between">
+              <div class="font-body text-[8pt] text-brand-ink">Bounce reduction</div>
+              <div class="font-display font-bold text-brand-blue text-[10pt]">−10–20%</div>
+            </div>
+            <div class="mt-[1.5mm] h-[2.4mm] rounded-full bg-brand-line overflow-hidden">
+              <div style="width: 55%;" class="h-full rounded-full bg-brand-blue"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="absolute left-0 right-0 bottom-0 px-[16mm] pb-[10mm]">
-      <div class="footer-rule pt-[3mm] flex items-center justify-between">
+    <footer class="absolute left-0 right-0 bottom-0 px-[16mm] pb-[9mm] z-10">
+      <div class="footer-rule pt-[2.5mm] flex items-center justify-between">
         <div class="font-body text-brand-ink text-[8pt] leading-snug">
           <span class="font-semibold">Prepared by Michael</span>
           <span class="text-brand-muted"> · 48 Hour Digital LLC · New York</span>
