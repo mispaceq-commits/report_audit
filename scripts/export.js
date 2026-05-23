@@ -11,6 +11,7 @@
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 const fs = require('fs');
+const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const PAGES_DIR = path.join(ROOT, 'src', 'pages');
@@ -105,6 +106,21 @@ async function main() {
     }
   } finally {
     await browser.close();
+  }
+
+  // Merge all per-page PDFs into a single combined PDF.
+  const pdfFiles = pages
+    .map((f) => path.join(DIST_DIR, path.basename(f, '.html') + '.pdf'))
+    .filter((p) => fs.existsSync(p));
+
+  if (pdfFiles.length > 1) {
+    const combinedOut = path.join(DIST_DIR, 'apex-legal-website-audit.pdf');
+    try {
+      execFileSync('pdfunite', [...pdfFiles, combinedOut], { stdio: 'inherit' });
+      console.log('\nCombined PDF:', path.relative(ROOT, combinedOut));
+    } catch (e) {
+      console.warn('\npdfunite failed (install poppler-utils for combined PDF):', e.message);
+    }
   }
 
   console.log('\nDone. Files in', path.relative(ROOT, DIST_DIR));
