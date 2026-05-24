@@ -6,3 +6,4 @@ src/styles.build.css
 .env.local
 .cache/
 .tmp/
+preview/

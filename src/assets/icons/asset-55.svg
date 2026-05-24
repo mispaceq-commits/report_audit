@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 89.61 112.19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: url(#Radial_Gradient_1);
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        mix-blend-mode: color-dodge;
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-7 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: url(#Radial_Gradient_1-3);
+      }
+
+      .cls-4 {
+        fill: url(#Radial_Gradient_1-2);
+      }
+
+      .cls-8 {
+        opacity: .95;
+      }
+
+      .cls-9 {
+        fill: #afb6e5;
+      }
+
+      .cls-10 {
+        fill: url(#linear-gradient);
+        mix-blend-mode: multiply;
+      }
+
+      .cls-11 {
+        fill: #e5e9ff;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="68.59" y1="97.17" x2="81.57" y2="91.24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e5e9ff"/>
+      <stop offset=".23" stop-color="#eff2ff"/>
+      <stop offset=".6" stop-color="#fbfbff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="42.6" y1="2.86" x2="-1.99" y2="79.31" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3f9cff"/>
+      <stop offset=".27" stop-color="#2859ad"/>
+      <stop offset=".41" stop-color="#1f3c88"/>
+      <stop offset="1" stop-color="#1f3c88"/>
+    </linearGradient>
+    <radialGradient id="Radial_Gradient_1" data-name="Radial Gradient 1" cx="8977.64" cy="50.27" fx="8977.64" fy="50.27" r="19.26" gradientTransform="translate(9000.48) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient-3" x1="56.44" y1="10.53" x2="17.75" y2="89.01" xlink:href="#linear-gradient-2"/>
+    <radialGradient id="Radial_Gradient_1-2" data-name="Radial Gradient 1" cx="8954.43" cy="42.66" fx="8954.43" fy="42.66" r="27.92" xlink:href="#Radial_Gradient_1"/>
+    <linearGradient id="linear-gradient-4" x1="75.65" y1="19.23" x2="33.59" y2="98.16" xlink:href="#linear-gradient-2"/>
+    <radialGradient id="Radial_Gradient_1-3" data-name="Radial Gradient 1" cx="8931.21" cy="31.86" fx="8931.21" fy="31.86" r="38.52" xlink:href="#Radial_Gradient_1"/>
+  </defs>
+  <g class="cls-7">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="Layer_1-2" data-name="Layer 1">
+        <g>
+          <polygon class="cls-10" points="78.6 81.63 46.71 100.22 66.68 109 89.61 96.47 78.6 81.63"/>
+          <g>
+            <g class="cls-8">
+              <polygon class="cls-11" points="9.2 33.2 .01 38.88 16.15 48.2 25.34 42.53 9.2 33.2"/>
+              <g>
+                <polygon class="cls-1" points="0 75.91 16.15 85.24 16.15 48.2 0 38.88 0 75.91"/>
+                <polygon class="cls-9" points="16.14 85.24 25.34 79.56 25.34 42.53 16.14 48.2 16.14 85.24"/>
+              </g>
+            </g>
+            <polygon class="cls-2" points="24.93 42.73 16.23 47.53 0 38.88 15.66 48.55 16.14 85.24 16.91 48.44 24.93 42.73"/>
+          </g>
+          <g>
+            <g class="cls-8">
+              <polygon class="cls-11" points="32.42 18.71 23.22 24.39 39.36 33.71 48.55 28.03 32.42 18.71"/>
+              <g>
+                <polygon class="cls-6" points="23.21 89.39 39.36 98.72 39.36 33.7 23.21 24.38 23.21 89.39"/>
+                <polygon class="cls-9" points="39.35 98.72 48.56 93.04 48.56 28.03 39.35 33.7 39.35 98.72"/>
+              </g>
+            </g>
+            <polygon class="cls-4" points="48.14 28.23 39.44 33.03 23.21 24.38 38.87 34.06 39.35 98.72 40.12 33.94 48.14 28.23"/>
+          </g>
+          <g>
+            <g class="cls-8">
+              <polygon class="cls-11" points="55.63 0 46.44 5.68 62.57 15 71.77 9.32 55.63 0"/>
+              <g>
+                <polygon class="cls-5" points="46.42 102.87 62.57 112.19 62.57 14.99 46.42 5.67 46.42 102.87"/>
+                <polygon class="cls-9" points="62.57 112.19 71.77 106.52 71.77 9.32 62.57 14.99 62.57 112.19"/>
+              </g>
+            </g>
+            <polygon class="cls-3" points="71.35 9.52 62.65 14.32 46.42 5.67 62.08 15.35 62.57 112.19 63.33 15.23 71.35 9.52"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
