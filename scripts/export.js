@@ -161,6 +161,20 @@ async function main() {
     }
   }
 
+  // Merge 750x500 social-proof slides (page-07 + page-08) into one PDF.
+  const slidePdfs = ['page-07.pdf', 'page-08.pdf']
+    .map((f) => path.join(DIST_DIR, f))
+    .filter((p) => fs.existsSync(p));
+  if (slidePdfs.length > 1) {
+    const slidesOut = path.join(DIST_DIR, 'apex-legal-social-proof-slides.pdf');
+    try {
+      execFileSync('pdfunite', [...slidePdfs, slidesOut], { stdio: 'inherit' });
+      console.log('Slides PDF:', path.relative(ROOT, slidesOut));
+    } catch (e) {
+      console.warn('pdfunite (slides) failed:', e.message);
+    }
+  }
+
   console.log('\nDone. Files in', path.relative(ROOT, DIST_DIR));
 }
 
