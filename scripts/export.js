@@ -144,7 +144,9 @@ async function main() {
 
   // Merge only the A4 pages into a single combined PDF.
   // Custom-sized slides (page-08, etc.) stay separate and are exported on their own.
-  const a4Pages = pages.filter((f) => !/^slide-/i.test(f) && !/^page-0?8/.test(f));
+  const a4Pages = pages.filter(
+    (f) => !/^slide-/i.test(f) && !/^page-0?7/.test(f) && !/^page-0?8/.test(f)
+  );
   const pdfFiles = a4Pages
     .map((f) => path.join(DIST_DIR, path.basename(f, '.html') + '.pdf'))
     .filter((p) => fs.existsSync(p));
