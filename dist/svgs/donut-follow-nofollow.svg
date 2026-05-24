@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="400" height="400">
+  <title>Backlinks — Follow vs Nofollow (541)</title>
+  <path d="M 100.000 20.000 A 80 80 0 1 1 51.206 163.397 L 64.624 145.963 A 58 58 0 1 0 100.000 42.000 Z" fill="#1F3C88" data-name="Follow 60.44%" />
+  <path d="M 51.206 163.397 A 80 80 0 0 1 100.000 20.000 L 100.000 42.000 A 58 58 0 0 0 64.624 145.963 Z" fill="#F58B24" data-name="Nofollow 39.56%" />
+  <text x="100" y="102" text-anchor="middle" font-family="Montserrat, 'Montserrat', Arial, sans-serif" font-weight="900" font-size="32" fill="#1F3C88" data-name="CenterValue">541</text>
+  <text x="100" y="124" text-anchor="middle" font-family="Inter, 'Inter', Arial, sans-serif" font-weight="500" font-size="9" fill="#5A6075" letter-spacing="1.4" data-name="CenterLabel">BACKLINKS</text>
+</svg>

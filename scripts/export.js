@@ -66,9 +66,29 @@ async function main() {
       console.log(`\n→ ${file}`);
 
       const page = await browser.newPage();
-      // Match A4 viewport at 96 DPI: 794 x 1123 px. Use device scale 3 for crisp PNG.
+      // Default viewport: A4 at 96 DPI (794 x 1123). Slides with custom dimensions
+      // override via data-width / data-height on <body>.
       await page.setViewport({ width: 794, height: 1123, deviceScaleFactor: 3 });
       await page.goto(url, { waitUntil: 'networkidle0', timeout: 60_000 });
+
+      // Read custom size + canvas selector from body data-* attributes.
+      const meta = await page.evaluate(() => {
+        const b = document.body;
+        const w = parseInt(b.dataset.width || '', 10);
+        const h = parseInt(b.dataset.height || '', 10);
+        const selector = b.dataset.canvas || '.page-a4';
+        return { width: w, height: h, selector };
+      });
+
+      const isCustom = meta.width > 0 && meta.height > 0;
+      if (isCustom) {
+        await page.setViewport({ width: meta.width, height: meta.height, deviceScaleFactor: 3 });
+        // Inject an @page rule that matches the custom slide size so puppeteer
+        // doesn't fall back to A4 from the existing CSS.
+        await page.addStyleTag({
+          content: `@page { size: ${meta.width}px ${meta.height}px; margin: 0; }`,
+        });
+      }
 
       // Wait for web fonts to settle.
       await page.evaluate(async () => {
@@ -78,29 +98,43 @@ async function main() {
       });
 
       const pdfOut = path.join(DIST_DIR, `${name}.pdf`);
-      await page.pdf({
-        path: pdfOut,
-        format: 'A4',
-        printBackground: true,
-        preferCSSPageSize: true,
-        margin: { top: 0, right: 0, bottom: 0, left: 0 },
-      });
+      if (isCustom) {
+        await page.pdf({
+          path: pdfOut,
+          width: `${meta.width}px`,
+          height: `${meta.height}px`,
+          printBackground: true,
+          preferCSSPageSize: true,
+          margin: { top: 0, right: 0, bottom: 0, left: 0 },
+        });
+      } else {
+        await page.pdf({
+          path: pdfOut,
+          format: 'A4',
+          printBackground: true,
+          preferCSSPageSize: true,
+          margin: { top: 0, right: 0, bottom: 0, left: 0 },
+        });
+      }
       console.log('  PDF:', path.relative(ROOT, pdfOut));
 
       const pngOut = path.join(DIST_DIR, `${name}.png`);
-      // Take a clip exactly the size of the .page-a4 element.
-      const clip = await page.evaluate(() => {
-        const el = document.querySelector('.page-a4');
+      // Take a clip exactly the size of the canvas element.
+      const clip = await page.evaluate((sel) => {
+        const el = document.querySelector(sel);
+        if (!el) return null;
         const r = el.getBoundingClientRect();
         return { x: r.x, y: r.y, width: r.width, height: r.height };
-      });
-      await page.screenshot({
-        path: pngOut,
-        type: 'png',
-        clip,
-        omitBackground: false,
-      });
-      console.log('  PNG:', path.relative(ROOT, pngOut));
+      }, meta.selector);
+      if (clip) {
+        await page.screenshot({
+          path: pngOut,
+          type: 'png',
+          clip,
+          omitBackground: false,
+        });
+        console.log('  PNG:', path.relative(ROOT, pngOut));
+      }
 
       await page.close();
     }
@@ -108,8 +142,10 @@ async function main() {
     await browser.close();
   }
 
-  // Merge all per-page PDFs into a single combined PDF.
-  const pdfFiles = pages
+  // Merge only the A4 pages into a single combined PDF.
+  // Custom-sized slides (page-08, etc.) stay separate and are exported on their own.
+  const a4Pages = pages.filter((f) => !/^slide-/i.test(f) && !/^page-0?8/.test(f));
+  const pdfFiles = a4Pages
     .map((f) => path.join(DIST_DIR, path.basename(f, '.html') + '.pdf'))
     .filter((p) => fs.existsSync(p));
 
